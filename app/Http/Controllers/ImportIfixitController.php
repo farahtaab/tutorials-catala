@@ -7,6 +7,7 @@ use App\Models\Guide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class ImportIfixitController extends Controller
 {
@@ -61,6 +62,14 @@ class ImportIfixitController extends Controller
                     'updated_at' => now(),
                 ]
             );
+
+            $guide = Guide::where('guide_id', $guide['guideid'])->first();
+            $tr = new GoogleTranslate('en');
+            //TODO: Aquí feu coses....
+            $output = $tr->setSource('en')->setTarget('ca')->translate('Goodbye');
+
+
+            $guide->save();
         }
     }
 }

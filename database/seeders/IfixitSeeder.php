@@ -15,9 +15,11 @@ class IfixitSeeder extends Seeder
      */
     public function run(): void
     {
-        $endpoint = 'https://www.ifixit.com/api/2.0/guides?limit=200&offset=0'; // Reemplaza con la URL correcta
-        $response = Http::get($endpoint);
+        $offset= 0;
 
+        $endpoint = 'https://www.ifixit.com/api/2.0/guides?limit=200&offset='.$offset; // Reemplaza con la URL correcta
+        $response = Http::get($endpoint);
+        while($response->successful() && strlen(json_encode($response->json())) > 50){
         if ($response->successful()) {
             $guides = $response->json();
 
@@ -36,7 +38,7 @@ class IfixitSeeder extends Seeder
                         'subject' => $guide['subject'],
                         'title' => $guide['title'],
                         'summary' => $guide['summary'],
-                        'difficulty' => $guide['difficulty'],
+                        'difficulty' => $guide['difficulty'] ?? "",
                         'time_required_max' => $guide['time_required_max'] ?? null,
                         'public' => $guide['public'],
                         'user_id' => $guide['userid'],
@@ -49,5 +51,9 @@ class IfixitSeeder extends Seeder
                 );
             }
         }
+        $offset += 200;
+        $endpoint = 'https://www.ifixit.com/api/2.0/guides?limit=200&offset='.$offset; // Reemplaza con la URL correcta
+        $response = Http::get($endpoint);
+    }
     }
 }

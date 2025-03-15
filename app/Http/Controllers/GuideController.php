@@ -13,7 +13,14 @@ class GuideController extends Controller
      */
     public function index()
     {
-        //
+        $guides = Guide::paginate(10); // Paginación para mejor visualización
+        return view('guides.index', compact('guides'));
+    }
+
+    public function show($id)
+    {
+        $guide = Guide::where('guide_id', $id)->firstOrFail();
+        return view('guides.show', compact('guide'));
     }
 
     /**
@@ -32,13 +39,6 @@ class GuideController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Guide $guide)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

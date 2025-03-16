@@ -7,7 +7,9 @@ Un projecte de reparació amb guies detallades fetes per la comunitat.
 - 🛠️ Llista d'eines necessàries  
 
 ## 🎥 Demo
-[![Mira la demo](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+[![Captura de pantalla](./Captura%20de%20pantalla%202025-03-16%20013155.png)](https://drive.google.com/file/d/1G1SDhKVHvMBtGOlLP6KypDBB9zbJemk-/view?usp=sharing)
+
+🔗 **Fes clic a la imatge per veure el vídeo**
 
 ## 🛠️ Instal·lació
 
